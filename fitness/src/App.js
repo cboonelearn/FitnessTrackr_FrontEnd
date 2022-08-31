@@ -1,7 +1,7 @@
 
 //This is a comment
 
-import Activites from "./components/Activities";
+import Activites from "./components/Activity-Components/Activities";
 // import Home from "./components/Home";
 
 function App() {

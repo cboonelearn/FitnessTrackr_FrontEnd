@@ -8,3 +8,10 @@ Routines
 My Routines
 Activities
 Login/Register (optional. Could be alternatively created as a modal or part of the header/footer)
+
+Goals:
+Get all code that requires no sign-in to display
+Make Register/Login forms even if they don't work
+Style whatever code we have
+Get the authorization to work
+Be able to post to api
