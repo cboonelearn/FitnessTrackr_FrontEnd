@@ -1,0 +1,10 @@
+Make Routes that anyone can access
+click links/tabs that display different parts of the app.
+see the route I am visiting in the url bar (i.e. Routines tab should have a route https://example.com/routines)
+stay on the "same page", while seeing the content update (i.e. use React Router, no page refresh)
+see Components/Tabs with corresponding routes:
+Home
+Routines
+My Routines
+Activities
+Login/Register (optional. Could be alternatively created as a modal or part of the header/footer)
