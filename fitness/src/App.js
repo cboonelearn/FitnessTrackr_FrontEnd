@@ -12,22 +12,34 @@ function App() {
   const [tokenString, setTokenString] = useState(localStorage.getItem('token'))
 
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+<div>
+  <Routes>
+    <Route
+      exact path="/"
+      element={<Home/>}
+    />
+    
+    {(tokenString === 'null' || tokenString === null) ? <Route 
+        path="/login"
+        element={<Login/>}
+    /> : null}
+
+    {(tokenString === 'null' || tokenString === null) ? <Route
+        path='/register'
+        element={<Register/>}
+    /> : null}
+    
+    <Route
+      path='/activities'
+      element={<Activities/>}
+    />
+    
+    <Route
+      path='/routines'
+      element={<Routines/>}
+    />
+  </Routes>
+</div>
   );
 }
 
@@ -37,5 +49,3 @@ ReactDom.render(
   </Router>,
   document.getElementById('root')
 )
-
-// export default App;
