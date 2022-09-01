@@ -31,11 +31,11 @@ const Register = () => {
 
 
                             const response = await registerNewUser(newUser, newPassword)
-                            if (response.success === false) {
+                            if (response.error) {
                                 alert('Username already exists')
                             } else {
                                 const token = response.token
-                                logIn(JSON.stringify(token))
+                                logIn(JSON.stringify(token), newUser)
                                 window.location='./'
                             }
                         }
