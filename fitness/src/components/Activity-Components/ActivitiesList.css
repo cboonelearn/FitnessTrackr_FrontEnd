@@ -1,0 +1,9 @@
+.activites-list{
+    display: flex;
+    flex-direction: column;
+}
+
+h1{
+    margin: auto;
+    padding: 12px;
+}

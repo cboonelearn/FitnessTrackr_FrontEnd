@@ -1,8 +1,12 @@
 import { getActivities } from "../../api/api";
 import React, { useEffect, useState } from "react";
+import Activity from "./Activity";
+import "./ActivitiesList.css"
 
-const Activites = () => {
+
+const ActivitesList = () => {
     const [activites, setActivites] = useState([]);
+
     const handleActivites = () =>{
         getActivities()
         .then(results => {
@@ -10,20 +14,21 @@ const Activites = () => {
             console.log(results)
         });
     }
+
     useEffect(() =>{
         handleActivites();
     }, []);
-    
+
+    const ActivitiesList = activites.map((activity) =>{
+       return <Activity activity={activity} />
+    })
+
     return ( 
-        <div className="Activites">
-            <h1>Activites</h1>
-            {activites.map((activity) =>{ return (<div key={activity.id}>
-                <h2>{activity.name}</h2>
-                <p>{activity.description}</p>
-                </div>)
-            })}
+        <div className="activites-list">
+        <h1>Activites</h1>
+        {ActivitiesList}
         </div>
      );
 }
-
-export default Activites;
+ 
+export default ActivitesList;
