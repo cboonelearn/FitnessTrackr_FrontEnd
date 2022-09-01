@@ -6,13 +6,21 @@ import Home from "./components/Home";
 import Routines from "./components/Routines";
 import Login from './components/Login';
 import Register from './components/Register';
+import Header from './components/Header';
+import MyRoutines from './components/MyRoutines';
+import { getUserData } from './api';
 
 function App() {
 // Define the state constants here:
   const [tokenString, setTokenString] = useState(localStorage.getItem('token'))
+  const [userName, setUserName] = useState(localStorage.getItem('username'))
+  const [userData, setUserData] = useState({})
+  const [routines, setRoutines] = useState([])
+  const [myRoutines, setMyRoutines] = useState([])
 
   return (
 <div>
+  <Header tokenString={tokenString} userData={userData} setUserData={setUserData}/>
   <Routes>
     <Route
       exact path="/"
@@ -36,8 +44,14 @@ function App() {
     
     <Route
       path='/routines'
-      element={<Routines/>}
+      element={<Routines routines={routines} setRoutines={setRoutines}/>}
     />
+
+    {(tokenString !== 'null' || tokenString !== null) ? <Route
+      path='/myroutines'
+      element={<MyRoutines myRoutines={myRoutines} setMyRoutines={setMyRoutines} tokenString={tokenString} userName={userName}/>}
+    /> : null}
+    
   </Routes>
 </div>
   );

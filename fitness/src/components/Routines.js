@@ -1,8 +1,8 @@
 import { getRoutines } from "../api";
 import React, { useEffect, useState } from "react";
 
-const Routines = () => {
-    const [routines, setRoutines] = useState([]);
+const Routines = (props) => {
+    const {routines, setRoutines} = props;
     const handleRoutines = () =>{
         getRoutines()
         .then(results => {

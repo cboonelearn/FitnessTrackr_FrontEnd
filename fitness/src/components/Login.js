@@ -9,11 +9,21 @@ const Login = () => {
         <div id='logIn'>
             <form 
                 onSubmit={async (event) => {
-                    event.preventDefault()
-                    const response = await logInUser(userNameString, passwordString)
-                    const token = response.data.token
-                    logIn(JSON.stringify(token))
-                    window.location='./'
+                    try {
+                        event.preventDefault()
+                        const response = await logInUser(userNameString, passwordString)
+                        const token = response.token
+                        console.log('token:', token);   //REMOVE THIS LATER
+                        if (token) {
+                            logIn(JSON.stringify(token), userNameString)
+                            window.location='./'
+                        }
+                        else {
+                            alert('Username or Password is incorrect')
+                        }
+                    } catch (error) {
+                        console.error(error)
+                    }
                 }}
                 id='logInForm'
                 style={{

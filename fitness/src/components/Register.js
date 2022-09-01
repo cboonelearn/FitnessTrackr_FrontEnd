@@ -21,19 +21,20 @@ const Register = () => {
                             if (newPassword.length < 8) {
                                 alert('Password must be at least 8 charaters')
                             }
-                            if (newPassword != '') {
-                                if (newPassword != confirmPassword) {
+                            if (newPassword !== '') {
+                                if (newPassword !== confirmPassword) {
                                     alert('Passwords do not match')
                                  }
+                            } else {
                                 alert('You must enter a password')
                             }
 
-                            
+
                             const response = await registerNewUser(newUser, newPassword)
                             if (response.success === false) {
                                 alert('Username already exists')
                             } else {
-                                const token = response.data.token
+                                const token = response.token
                                 logIn(JSON.stringify(token))
                                 window.location='./'
                             }

@@ -1,39 +1,60 @@
-import { getRoutines, getUserData, getUserRoutines, createRoutine, deleteRoutine } from "../api";
+import { createRoutine, getUserRoutines, getUserData, getRoutines } from "../api";
 import React, { useEffect, useState } from "react";
 
-const MyRoutines = (props) => {
-    const {myRoutines, setMyRoutines, userData, tokenString, userName} = props;
+const MyRoutinesDraft = (props) => {
+    const { userData, setUserData, tokenString, routines, myRoutines, setMyRoutines } = props
+    // const [myRoutines, setMyRoutines] = useState([]);
     const [routineNameString, setRoutineNameString] = useState('')
     const [routineGoalString, setRoutineGoalString] = useState('')
-    const [routineIsPublic, setRoutineIsPublic] = useState(false)
+    const [routineIsPublic, setRoutineIsPublic] = useState(true)
+    console.log('userData:', userData);
+    console.log('tokenString:', tokenString);
+    console.log('myRoutines:', myRoutines);
 
-    // ;(async () => {
-    //     const username = await getUserData(tokenString)
-    //     console.log('Testing username:', username);
-    // })()
-    
-    const handleRoutines = () =>{
-        // getRoutines()
-        getUserRoutines(userName, tokenString)
-        .then(results => {
-            setMyRoutines(results)
-            console.log(results)
-        });
-    }
-    
+    // const handleMyRoutines = async () => {
+    //     const results = await getUserRoutines(userData, tokenString)
+    //     // const results = await getRoutines()
+    //     setMyRoutines(results)
+    //     console.log('handleMyRoutines:', results);
+    // }
+
+    // const handleMyRoutines = () =>{
+    //     getUserRoutines(userData, tokenString)
+    //     .then(results => {
+    //         setMyRoutines(results)
+    //         console.log(results)   //REMOVE THIS LATER
+    //     });
+    // }
     useEffect(() =>{
-        handleRoutines();
+        async function handleMyRoutines() {
+            let response = await getUserRoutines(userData, tokenString)
+            setMyRoutines(response)
+        }
+        
+        const myData = async () => {
+            const response = await getUserData(localStorage.getItem('token'))
+            const result = await response.username
+            setUserData(result)
+        }
+        myData()
+        handleMyRoutines();
     }, []);
 
     return ( 
         <div className="Routines">
             <h1>Routines</h1>
+            {/* <button id='createRoutineButton' onClick={(event) => {
+                    event.preventDefault()
+                    document.getElementById('createRoutineForm').classList.toggle('hidden')
+                }}>
+                Create Routine
+            </button> */}
             <form 
                 onSubmit={async (event) => {
                     try {
                         event.preventDefault()
                         await createRoutine(routineNameString, routineGoalString, routineIsPublic, tokenString)
-                        handleRoutines()
+                        // handleMyRoutines()
                     } catch (error) {
                         console.error(error)
                     }
@@ -84,17 +105,11 @@ const MyRoutines = (props) => {
                     </ul>
                     </div>)
                 })}
-                <button id='deleteRoutineButton' onClick={async (event) => {
-                    event.preventDefault()
-                    await deleteRoutine(routine.id, tokenString) 
-                    handleRoutines()
-                    }}>
-                    DELETE
-                </button>
                 </div>)
-            })}
+            })
+        }
         </div>
      );
 }
 
-export default MyRoutines;
+export default MyRoutinesDraft;
