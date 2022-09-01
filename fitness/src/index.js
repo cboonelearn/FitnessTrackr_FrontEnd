@@ -1,17 +1,53 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React, { useState } from 'react';
+import ReactDom from 'react-dom';
+import { Route, Routes, BrowserRouter as Router } from 'react-router-dom';
+import Activities from "./components/Activities";
+import Home from "./components/Home";
+import Routines from "./components/Routines";
+import Login from './components/Login';
+import Register from './components/Register';
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-);
+function App() {
+// Define the state constants here:
+  const [tokenString, setTokenString] = useState(localStorage.getItem('token'))
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+  return (
+<div>
+  <Routes>
+    <Route
+      exact path="/"
+      element={<Home/>}
+    />
+    
+    {(tokenString === 'null' || tokenString === null) ? <Route 
+        path="/login"
+        element={<Login/>}
+    /> : null}
+
+    {(tokenString === 'null' || tokenString === null) ? <Route
+        path='/register'
+        element={<Register/>}
+    /> : null}
+    
+    <Route
+      path='/activities'
+      element={<Activities/>}
+    />
+    
+    <Route
+      path='/routines'
+      element={<Routines/>}
+    />
+  </Routes>
+</div>
+  );
+}
+
+ReactDom.render(
+  <Router>
+    <App/>
+  </Router>,
+  document.getElementById('root')
+)
+
+// export default App;

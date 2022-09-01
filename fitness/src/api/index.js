@@ -1,5 +1,16 @@
 export const BASE_URL = 'http://fitnesstrac-kr.herokuapp.com/api/'
 
+// LogIn helper function by setting localStorage token
+export const logIn = (token) => {
+    // setToken(true)
+    localStorage.setItem('token', token)
+}
+
+// LogOut helper function by clearing localStorage token
+export const logOut = () => {
+    localStorage.setItem('token', null)
+}
+
 // Helper function for making the request headers
 export const makeHeaders = (tokenString) => {
     let headers = {}

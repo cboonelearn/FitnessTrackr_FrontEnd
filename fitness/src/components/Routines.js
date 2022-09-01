@@ -1,4 +1,4 @@
-import { getRoutines } from "../api/api";
+import { getRoutines } from "../api";
 import React, { useEffect, useState } from "react";
 
 const Routines = () => {
