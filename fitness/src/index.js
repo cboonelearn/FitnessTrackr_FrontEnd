@@ -63,5 +63,3 @@ ReactDom.render(
   </Router>,
   document.getElementById('root')
 )
-
-// export default App;
