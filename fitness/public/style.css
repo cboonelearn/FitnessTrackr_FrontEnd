@@ -12,3 +12,35 @@ body {
       monospace;
   }
   
+  #header {
+    background:rgb(47, 64, 79);
+    grid-row: 1;
+    grid-column: 1 / -1;
+    color: white;
+    padding: 30px 200px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#header>#headerNav {
+    display: flex;
+    justify-content: space-between;
+    flex-grow: 1;
+}
+
+#header>#headerNav>* {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    margin: 4px;
+    padding: 12px 4px;
+}
+
+#header>#headerNav>button {
+    color: white;
+    background-color:rgb(47, 64, 79);
+    font-weight: bold;
+    font-size: medium;
+    margin: 4px;
+}

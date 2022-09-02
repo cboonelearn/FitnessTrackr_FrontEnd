@@ -8,6 +8,7 @@ import Login from './components/Login';
 import Register from './components/Register';
 import Header from './components/Header';
 import MyRoutines from './components/MyRoutines';
+import EditRoutine from './components/EditRoutine';
 import { getUserData } from './api';
 
 function App() {
@@ -39,7 +40,7 @@ function App() {
     
     <Route
       path='/activities'
-      element={<Activities/>}
+      element={<Activities tokenString={tokenString}/>}
     />
     
     <Route
@@ -51,7 +52,11 @@ function App() {
       path='/myroutines'
       element={<MyRoutines myRoutines={myRoutines} setMyRoutines={setMyRoutines} tokenString={tokenString} userName={userName}/>}
     /> : null}
-    
+
+    <Route
+      path='/editroutine/:routineid'
+      element={<EditRoutine/>}
+    />    
   </Routes>
 </div>
   );

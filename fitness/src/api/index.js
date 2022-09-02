@@ -113,6 +113,9 @@ export async function createActivity(activityName, activityDescription, tokenStr
     }).then(response => response.json())
     .then(result => {
         console.log('createActivity:', result);   //REMOVE THIS LATER
+        if (result.error) {
+            alert("This Activity Already Exists")
+        }
         return(result)
     })
     .catch(console.error);
