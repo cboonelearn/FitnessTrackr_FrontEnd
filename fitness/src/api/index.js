@@ -217,21 +217,25 @@ export async function deleteRoutine(routineId, tokenString) {
     .catch(console.error);
 }
 
-// Post (add) an activity to a routine
-export async function addActivityToRoutine(activityId, activityCount, activityDuration, routineId) {
-    return fetch(`${BASE_URL}routines/${routineId}/activities`, {
-        method: "POST",
-        body: JSON.stringify({
-            activityId: activityId,
-            count: activityCount,
-            duration: activityDuration
+// Post (add) an activity to a routine ***This requires headers
+export async function addActivityToRoutine(activityid, activityCount, activityDuration, routineId, tokenString) {
+    let headers = makeHeaders(tokenString)
+    try {
+        const request = await fetch(`${BASE_URL}routines/${routineId}/activities`, {
+            method: "POST",
+            headers: headers,
+            body: JSON.stringify({
+                activityId: activityid, 
+                count: activityCount, 
+                duration: activityDuration
+            })
         })
-    }).then(response => response.json())
-    .then(result => {
-        console.log('addActivityToRoutine:', result);    //REMOVE THIS LATER
-        return(result)
-    })
-    .catch(console.error);
+        const response = await request.json()
+        console.log(response);
+        return response
+    } catch (error) {
+        console.error(error)
+    }
 }
 
 // Patch (update) an activity attached to a routine (requires a logged-in user that is also the owner of the routine)

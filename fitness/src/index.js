@@ -55,7 +55,7 @@ function App() {
 
     <Route
       path='/editroutine/:routineid'
-      element={<EditRoutine/>}
+      element={<EditRoutine myRoutines={myRoutines} setMyRoutines={setMyRoutines} tokenString={tokenString} userName={userName}/>}
     />    
   </Routes>
 </div>
