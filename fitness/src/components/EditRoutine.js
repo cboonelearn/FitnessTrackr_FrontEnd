@@ -140,7 +140,6 @@ const EditRoutine = (props) => {
                 {routine.activities.map((activity) => { return (<div key={activity.id}>
                     <ul>
                     <li>Activity Name: {activity.name}</li>
-                    {/* <li>Routine Activity ID: {activity.routineActivityId}</li> */}
                         <ul>
                             <li>Activity Description: {activity.description}</li>
                             {activity.duration ? <li>Activity Duration: {activity.duration}</li> : null}
@@ -149,7 +148,7 @@ const EditRoutine = (props) => {
                     </ul>
                     <button style={{margin: '5px'}} id='editActivityButton' onClick={async (event) => {
                     event.preventDefault()
-                    // window.location=`./editroutineactivity/${}`
+                    window.location=`${activity.routineId}/editroutineactivity/${activity.routineActivityId}`
                     }}>
                     EDIT ACTIVITY
                 </button>
@@ -159,7 +158,7 @@ const EditRoutine = (props) => {
                     handleActivities()
                     handleRoutines()
                     }}>
-                    DELETE ROUTINE
+                    DELETE ACTIVITY
                 </button>
                     </div>)
                 })}

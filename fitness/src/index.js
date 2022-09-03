@@ -9,7 +9,7 @@ import Register from './components/Register';
 import Header from './components/Header';
 import MyRoutines from './components/MyRoutines';
 import EditRoutine from './components/EditRoutine';
-import { getUserData } from './api';
+import EditRoutineActivity from './components/EditRoutineActivity';
 
 function App() {
 // Define the state constants here:
@@ -57,6 +57,11 @@ function App() {
       path='/editroutine/:routineid'
       element={<EditRoutine myRoutines={myRoutines} setMyRoutines={setMyRoutines} tokenString={tokenString} userName={userName}/>}
     />    
+
+    <Route
+      path='/editroutine/:routineid/editroutineactivity/:routineactivityid'
+      element={<EditRoutineActivity myRoutines={myRoutines} setMyRoutines={setMyRoutines} tokenString={tokenString} userName={userName}/>}
+    />
   </Routes>
 </div>
   );
