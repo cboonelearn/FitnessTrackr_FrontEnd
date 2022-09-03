@@ -38,7 +38,6 @@ export async function registerNewUser(username, password) {
     })
     }).then(response => response.json())
     .then(result => {
-        console.log('registerNewUser', result);  // REMOVE THIS LATER
         return(result)
     })
     .catch(console.error)
@@ -57,7 +56,6 @@ export async function logInUser(username, password) {
     })
     }).then(response => response.json())
     .then(result => {
-        console.log('logInUser', result);  // REMOVE THIS LATER
         return(result)
     })
     .catch(console.error);
@@ -70,7 +68,6 @@ export async function getUserData(tokenString) {
         headers: headers,
     }).then(response => response.json())
     .then(result => {
-        console.log('getUserData', result);   //REMOVE THIS LATER
         return(result)
     })
     .catch(console.error);
@@ -83,7 +80,6 @@ export async function getUserRoutines(username, tokenString) {
         headers: headers,
     }).then(response => response.json())
     .then(result => {
-        console.log('getUserRoutines:', result);   //REMOVE THIS LATER
         return(result)
     })
     .catch(console.error);
@@ -112,7 +108,6 @@ export async function createActivity(activityName, activityDescription, tokenStr
         })
     }).then(response => response.json())
     .then(result => {
-        console.log('createActivity:', result);   //REMOVE THIS LATER
         if (result.error) {
             alert("This Activity Already Exists")
         }
@@ -131,7 +126,6 @@ export async function updateActivity(activityName, activityDescription, activity
         })
     }).then(response => response.json())
     .then(result => {
-        console.log('updateActivity:', result);   //REMOVE THIS LATER
         return(result)
     })
     .catch(console.error);
@@ -145,7 +139,6 @@ export async function getRoutinesWithActivity(activityId) {
         },
     }).then(response => response.json())
     .then(result => {
-        console.log('getRoutinesWithActivity:', result);   //REMOVE THIS LATER
         return(result)
     })
     .catch(console.error);
@@ -159,7 +152,6 @@ export async function getRoutines() {
         },
     }).then(response => response.json())
     .then(result => {
-        console.log('getRoutines:', result);   //REMOVE THIS LATER
         return(result)
     })
     .catch(console.error);
@@ -178,7 +170,6 @@ export async function createRoutine(routineName, routineGoal, routineIsPublic = 
         })
     }).then(response => response.json())
     .then(result => {
-        console.log('createRoutine:', result);   //REMOVE THIS LATER
         return(result)
     })
     .catch(console.error);
@@ -197,7 +188,6 @@ export async function updateRoutine(routineName, routineGoal, routineIsPublic = 
         })
     }).then(response => response.json())
     .then(result => {
-        console.log('updateRoutine:', result);   //REMOVE THIS LATER
         return(result)
     })
     .catch(console.error);
@@ -211,7 +201,6 @@ export async function deleteRoutine(routineId, tokenString) {
         headers: headers
     }).then(response => response.json())
     .then(result => {
-        console.log('deleteRoutine:', result);
         return(result)
     })
     .catch(console.error);
@@ -231,7 +220,6 @@ export async function addActivityToRoutine(activityid, activityCount, activityDu
             })
         })
         const response = await request.json()
-        console.log(response);
         return response
     } catch (error) {
         console.error(error)
@@ -250,7 +238,6 @@ export async function updateActivityInRoutine(activityCount, activityDuration, r
         })
     }).then(response => response.json())
     .then(result => {
-        console.log('updateActivityInRoutine:', result);    //REMOVE THIS LATER
         return(result)
     })
     .catch(console.error);
@@ -264,7 +251,6 @@ export async function deleteActivityInRoutine(routineActivityId, tokenString) {
         headers: headers
     }).then(response => response.json())
     .then(result => {
-        console.log('deleteActivityInRoutine:', result);
         return(result)
     })
     .catch(console.error)

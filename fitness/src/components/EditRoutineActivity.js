@@ -24,47 +24,24 @@ const EditRoutineActivity = (props) => {
                 filteredRoutines.push(results[i])
             }
         }
-        // console.log('Filtered Routines:', filteredRoutines);
         setMyRoutines(filteredRoutines)
 
         let filteredRoutineActivities = filteredRoutines[0].activities
-        console.log(filteredRoutineActivities);
         for (let j=0; j<filteredRoutineActivities.length; j++) {
-            // console.log(typeof (filteredRoutineActivities[j].routineActivityId));
-            // console.log(typeof (params.routineactivityid));
             if (filteredRoutineActivities[j].routineActivityId === parseInt(params.routineactivityid)) {
-                // console.log('This is true!');
                 filteredActivities.push(filteredRoutineActivities[j])
             }
         }
-        console.log('Filtered Activities:', filteredActivities);
         setRoutineActivities(filteredActivities)
-        console.log(activities);
     }
     
     useEffect(() =>{
         handleRoutines();
     }, []);
 
-    // const handleActivities = () =>{
-    //     console.log('Filtered Routines inside Activities Handler:', filteredRoutines);
-    //     getActivities()
-    //     .then(results => {
-    //         setActivities(results)
-    //     });
-    // }
-
-    // useEffect(() =>{
-    //     handleActivities();
-    // }, []);
-
     return (
         <div>
-            
-            
-{/* ACTIVITIES FORM ENDS HERE */}
                 {routineActivities.map((activity) => { 
-                    console.log('map routien activities', routineActivities);
                     return (<div key={activity.id}>
                     <h1>Activity Name: {activity.name}</h1>
                     <ul>

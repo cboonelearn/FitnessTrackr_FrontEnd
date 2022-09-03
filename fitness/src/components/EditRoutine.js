@@ -83,7 +83,6 @@ const EditRoutine = (props) => {
                     }}></input></div>
                     <button id='createRoutineButton'>Submit Change</button>
                 </form>
-{/* ACTIVITIES FORM STARTS HERE */}
                 <form id="addActivityForm" onSubmit={async (event) => {
                     event.preventDefault();
                     let filteredActivity = activities.filter(o=>Object.values(o).includes(activity))
@@ -92,7 +91,7 @@ const EditRoutine = (props) => {
                         await addActivityToRoutine(filteredActivityId, parseInt(activityCountString), parseInt(activityDurationString), routine.id, tokenString)
                         handleActivities()
                         handleRoutines()
-                        // window.location='/myroutines'
+                        window.location='/myroutines'
                     } catch (errorObject) {
                     console.error(errorObject);
                     };
@@ -135,7 +134,6 @@ const EditRoutine = (props) => {
                     </fieldset>
                     <button>Add Activity</button>
                 </form>
-{/* ACTIVITIES FORM ENDS HERE */}
                 <p>Included Activities:</p>
                 {routine.activities.map((activity) => { return (<div key={activity.id}>
                     <ul>

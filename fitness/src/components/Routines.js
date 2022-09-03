@@ -7,7 +7,6 @@ const Routines = (props) => {
         getRoutines()
         .then(results => {
             setRoutines(results)
-            console.log(results)
         });
     }
     useEffect(() =>{

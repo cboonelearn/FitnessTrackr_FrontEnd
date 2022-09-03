@@ -10,7 +10,6 @@ const Activites = (props) => {
         getActivities()
         .then(results => {
             setActivites(results)
-            console.log(results)
         });
     }
     useEffect(() =>{

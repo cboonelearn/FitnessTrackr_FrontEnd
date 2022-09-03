@@ -7,17 +7,10 @@ const MyRoutines = (props) => {
     const [routineGoalString, setRoutineGoalString] = useState('')
     const [routineIsPublic, setRoutineIsPublic] = useState(false)
 
-    // ;(async () => {
-    //     const username = await getUserData(tokenString)
-    //     console.log('Testing username:', username);
-    // })()
-    
     const handleRoutines = () =>{
-        // getRoutines()
         getUserRoutines(userName, tokenString)
         .then(results => {
             setMyRoutines(results)
-            console.log(results)
         });
     }
     
