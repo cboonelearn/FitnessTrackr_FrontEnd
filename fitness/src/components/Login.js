@@ -13,7 +13,6 @@ const Login = () => {
                         event.preventDefault()
                         const response = await logInUser(userNameString, passwordString)
                         const token = response.token
-                        console.log('token:', token);   //REMOVE THIS LATER
                         if (token) {
                             logIn(JSON.stringify(token), userNameString)
                             window.location='./'

@@ -7,17 +7,10 @@ const MyRoutines = (props) => {
     const [routineGoalString, setRoutineGoalString] = useState('')
     const [routineIsPublic, setRoutineIsPublic] = useState(false)
 
-    // ;(async () => {
-    //     const username = await getUserData(tokenString)
-    //     console.log('Testing username:', username);
-    // })()
-    
     const handleRoutines = () =>{
-        // getRoutines()
         getUserRoutines(userName, tokenString)
         .then(results => {
             setMyRoutines(results)
-            console.log(results)
         });
     }
     
@@ -70,6 +63,19 @@ const MyRoutines = (props) => {
             </form>
             {myRoutines.map((routine) =>{ return (<div key={routine.id}>
                 <h2>Routine Name: {routine.name}</h2>
+                <button style={{margin: '5px'}} id='editRoutineButton' onClick={async (event) => {
+                    event.preventDefault()
+                    window.location=`./editroutine/${routine.id}`
+                    }}>
+                    EDIT ROUTINE
+                </button>
+                <button style={{margin: '5px'}} id='deleteRoutineButton' onClick={async (event) => {
+                    event.preventDefault()
+                    await deleteRoutine(routine.id, tokenString) 
+                    handleRoutines()
+                    }}>
+                    DELETE ROUTINE
+                </button>
                 <p>Goal: {routine.goal}</p>
                 <p>Creator: {routine.creatorName}</p>
                 <p>Included Activities:</p>
@@ -84,13 +90,6 @@ const MyRoutines = (props) => {
                     </ul>
                     </div>)
                 })}
-                <button id='deleteRoutineButton' onClick={async (event) => {
-                    event.preventDefault()
-                    await deleteRoutine(routine.id, tokenString) 
-                    handleRoutines()
-                    }}>
-                    DELETE
-                </button>
                 </div>)
             })}
         </div>

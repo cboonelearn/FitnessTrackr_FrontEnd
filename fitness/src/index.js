@@ -8,7 +8,8 @@ import Login from './components/Login';
 import Register from './components/Register';
 import Header from './components/Header';
 import MyRoutines from './components/MyRoutines';
-import { getUserData } from './api';
+import EditRoutine from './components/EditRoutine';
+import EditRoutineActivity from './components/EditRoutineActivity';
 
 function App() {
 // Define the state constants here:
@@ -39,7 +40,7 @@ function App() {
     
     <Route
       path='/activities'
-      element={<Activities/>}
+      element={<Activities tokenString={tokenString}/>}
     />
     
     <Route
@@ -51,7 +52,16 @@ function App() {
       path='/myroutines'
       element={<MyRoutines myRoutines={myRoutines} setMyRoutines={setMyRoutines} tokenString={tokenString} userName={userName}/>}
     /> : null}
-    
+
+    <Route
+      path='/editroutine/:routineid'
+      element={<EditRoutine myRoutines={myRoutines} setMyRoutines={setMyRoutines} tokenString={tokenString} userName={userName}/>}
+    />    
+
+    <Route
+      path='/editroutine/:routineid/editroutineactivity/:routineactivityid'
+      element={<EditRoutineActivity myRoutines={myRoutines} setMyRoutines={setMyRoutines} tokenString={tokenString} userName={userName}/>}
+    />
   </Routes>
 </div>
   );
