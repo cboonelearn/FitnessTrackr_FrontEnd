@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { logIn, registerNewUser } from '../api';
+import "./Register.css"
 
 const Register = () => {
     const [newUser, setNewUser] = useState('')

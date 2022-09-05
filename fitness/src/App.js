@@ -7,7 +7,6 @@ import Routines from "./components/Routines";
 import Login from './components/Login';
 import Register from './components/Register';
 import Activites from "./components/Activities";
-// import Home from "./components/Home";
 
 function App() {
 // Define the state constants here:

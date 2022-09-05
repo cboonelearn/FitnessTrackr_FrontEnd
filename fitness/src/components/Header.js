@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
-import { logOut, getUserData } from '../api';
+import { logOut, getUserData } from '../api'
+import "./Header.css";
 
 
 const Header = (props) => {

@@ -1,5 +1,6 @@
 import { getRoutines, getUserData, getUserRoutines, createRoutine, deleteRoutine } from "../api";
 import React, { useEffect, useState } from "react";
+import "./MyRoutines.css"
 
 const MyRoutines = (props) => {
     const {myRoutines, setMyRoutines, userData, tokenString, userName} = props;
@@ -61,7 +62,8 @@ const MyRoutines = (props) => {
                 <button id='createRoutineButton'>Create Routine</button>
                 
             </form>
-            {myRoutines.map((routine) =>{ return (<div key={routine.id}>
+            <div className="Routine-Cards-List">
+            {myRoutines.map((routine) =>{ return (<div className="Routine-Cards" key={routine.id}>
                 <h2>Routine Name: {routine.name}</h2>
                 <button style={{margin: '5px'}} id='editRoutineButton' onClick={async (event) => {
                     event.preventDefault()
@@ -92,6 +94,7 @@ const MyRoutines = (props) => {
                 })}
                 </div>)
             })}
+            </div>
         </div>
      );
 }

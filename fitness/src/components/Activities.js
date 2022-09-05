@@ -1,5 +1,6 @@
 import { getActivities, createActivity } from "../api";
 import React, { useEffect, useState } from "react";
+import "./Activities.css"
 
 const Activites = (props) => {
     const { tokenString } = props
@@ -55,11 +56,15 @@ const Activites = (props) => {
                 <button id='createActivityButton'>Create Activity</button>
                 
             </form>
-            {activites.map((activity) =>{ return (<div key={activity.id}>
+
+            <div className="activity-cards-list">
+            {activites.map((activity) =>{ return (<div className="activity-cards" key={activity.id}>
+
                 <h2>{activity.name}</h2>
                 <p>{activity.description}</p>
                 </div>)
             })}
+            </div>
         </div>
      );
 }

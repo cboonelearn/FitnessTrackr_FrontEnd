@@ -1,0 +1,20 @@
+#header{
+    display: flex;
+    flex-direction: column;
+    background-color: #75E6DA;
+}
+
+#headerNav{
+    display: flex;
+    justify-content: flex-end;
+}
+
+#headerNav > *{
+    margin: 0px 20px;
+    color: black;
+}
+
+h1{
+    display: flex;
+    justify-content: center;
+}
