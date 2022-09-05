@@ -56,8 +56,10 @@ const Activites = (props) => {
                 <button id='createActivityButton'>Create Activity</button>
                 
             </form>
+
             <div className="activity-cards-list">
             {activites.map((activity) =>{ return (<div className="activity-cards" key={activity.id}>
+
                 <h2>{activity.name}</h2>
                 <p>{activity.description}</p>
                 </div>)
