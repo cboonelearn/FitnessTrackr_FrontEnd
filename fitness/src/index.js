@@ -8,7 +8,9 @@ import Login from './components/Login';
 import Register from './components/Register';
 import Header from './components/Header';
 import MyRoutines from './components/MyRoutines';
-import { getUserData } from './api';
+import EditRoutine from './components/EditRoutine';
+import EditRoutineActivity from './components/EditRoutineActivity';
+
 function App() {
 // Define the state constants here:
   const [tokenString, setTokenString] = useState(localStorage.getItem('token'))
@@ -16,6 +18,7 @@ function App() {
   const [userData, setUserData] = useState({})
   const [routines, setRoutines] = useState([])
   const [myRoutines, setMyRoutines] = useState([])
+
   return (
 <div>
   <Header tokenString={tokenString} userData={userData} setUserData={setUserData}/>
@@ -24,30 +27,46 @@ function App() {
       exact path="/"
       element={<Home/>}
     />
-    {(tokenString === 'null' || tokenString === null) ? <Route
+    
+    {(tokenString === 'null' || tokenString === null) ? <Route 
         path="/login"
         element={<Login/>}
     /> : null}
+
     {(tokenString === 'null' || tokenString === null) ? <Route
         path='/register'
         element={<Register/>}
     /> : null}
+    
     <Route
       path='/activities'
-      element={<Activities/>}
+      element={<Activities tokenString={tokenString}/>}
     />
+    
     <Route
       path='/routines'
       element={<Routines routines={routines} setRoutines={setRoutines}/>}
     />
+
     {(tokenString !== 'null' || tokenString !== null) ? <Route
       path='/myroutines'
       element={<MyRoutines myRoutines={myRoutines} setMyRoutines={setMyRoutines} tokenString={tokenString} userName={userName}/>}
     /> : null}
+
+    <Route
+      path='/editroutine/:routineid'
+      element={<EditRoutine myRoutines={myRoutines} setMyRoutines={setMyRoutines} tokenString={tokenString} userName={userName}/>}
+    />    
+
+    <Route
+      path='/editroutine/:routineid/editroutineactivity/:routineactivityid'
+      element={<EditRoutineActivity myRoutines={myRoutines} setMyRoutines={setMyRoutines} tokenString={tokenString} userName={userName}/>}
+    />
   </Routes>
 </div>
   );
 }
+
 ReactDom.render(
   <Router>
     <App/>

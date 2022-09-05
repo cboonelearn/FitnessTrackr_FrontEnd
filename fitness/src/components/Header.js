@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
-import { logOut, getUserData } from '../api';
+import { logOut, getUserData } from '../api'
+import "./Header.css";
 
 
 const Header = (props) => {
@@ -25,25 +26,25 @@ const Header = (props) => {
                 {localStorage.getItem('token') !== null && localStorage.getItem('token') !== 'null' ? <p id='navWelcome'>
                     Welcome, {`${userData}`}
                 </p> : null}
-                <a href='./' id='homeLink'>
+                <a href='/' id='homeLink'>
                     HOME
                 </a>
-                {(tokenString === 'null' || tokenString === null) ? null : <a href='./myroutines' id='messagesLink'>
+                {(tokenString === 'null' || tokenString === null) ? null : <a href='/myroutines' id='messagesLink'>
                     MY ROUTINES
                 </a>}
-                <a href='./routines' id='profileLink' className='hidden'>
+                <a href='/routines' id='profileLink' className='hidden'>
                     ROUTINES
                 </a>
-                <a href='./activities' id='profileLink' className='hidden'>
+                <a href='/activities' id='profileLink' className='hidden'>
                     ACTIVITIES
                 </a>
-                {(tokenString === 'null' || tokenString === null) ? <a href='./login' id='loginLink'>
+                {(tokenString === 'null' || tokenString === null) ? <a href='/login' id='loginLink'>
                     LOGIN
                 </a> : null}
                 {(tokenString !== 'null' && tokenString !== null) ? <button id='logOutButton' className='pseudoLink' onClick={(event) => {
                         event.preventDefault()
                         logOut()
-                        window.location='./login'
+                        window.location='/login'
                     }}>
                     LOGOUT
                 </button> : null}

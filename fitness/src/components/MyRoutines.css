@@ -1,0 +1,26 @@
+.Routines{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.Routine-Cards{
+    margin-top: 25px;
+    margin-left: 5px;
+    margin-right: 5px;
+    border: 2px solid red;
+    border-radius: 25px;
+    padding: 10px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+    background-color: white;
+}
+
+.Routine-Cards-List{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}

@@ -1,5 +1,6 @@
 import { getRoutines } from "../api";
 import React, { useEffect, useState } from "react";
+import "./Routines.css"
 
 const Routines = (props) => {
     const {routines, setRoutines} = props;
@@ -7,7 +8,6 @@ const Routines = (props) => {
         getRoutines()
         .then(results => {
             setRoutines(results)
-            console.log(results)
         });
     }
     useEffect(() =>{
@@ -17,12 +17,12 @@ const Routines = (props) => {
     return ( 
         <div className="Routines">
             <h1>Routines</h1>
-            {routines.map((routine) =>{ return (<div key={routine.id}>
+            {routines.map((routine) =>{ return (<div className="routine-cards" key={routine.id}>
                 <h2>Routine Name: {routine.name}</h2>
                 <p>Goal: {routine.goal}</p>
                 <p>Creator: {routine.creatorName}</p>
                 <p>Included Activities:</p>
-                {routine.activities.map((activity) => { return (<div key={activity.id}>
+                {routine.activities.map((activity) => { return (<div className="activity-cards" key={activity.id}>
                     <ul>
                     <li>Activity Name: {activity.name}</li>
                         <ul>
